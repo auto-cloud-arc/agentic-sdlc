@@ -44,6 +44,8 @@ The following infographic is a supplemental reference for the broader Agentic SD
 
 ![Agentic SDLC automation overview](images/agentic-sdlc-infographic.png)
 
+If you want a more detailed onboarding path than the quickstart below, use `docs/training/getting-started-guide.md`.
+
 ## Quickstart
 
 1. Create and activate a virtual environment.
@@ -161,6 +163,7 @@ pytest
 
 - `docs/meeting-notes/2026-04-kickoff.md` is the ambiguous input artifact for the workshop.
 - `docs/requirements/req-001-orchestrator.md` and `docs/requirements/adr-001-event-model.md` capture the current requirement set and schema decision.
+- `docs/training/getting-started-guide.md` provides a more explicit onboarding and local setup walkthrough than the README quickstart.
 - `docs/standards/` contains `coding-standards.md`, `testing-standards.md`, `observability-standards.md`, and `prompting-playbook.md`.
 - `docs/demos/` contains four facilitator scripts with exact Copilot prompts.
 - `docs/issues/sample-issues.md` contains the sample 8-issue breakdown.
