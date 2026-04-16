@@ -1,0 +1,41 @@
+name: Bug
+about: Report incorrect behavior
+labels: [bug]
+body:
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed Behavior
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: Conditions to consider this bug fixed.
+    validations:
+      required: true
+  - type: textarea
+    id: test-plan
+    attributes:
+      label: Test Plan
+    validations:
+      required: true
+  - type: textarea
+    id: telemetry
+    attributes:
+      label: Logging/Telemetry Impact
+    validations:
+      required: true
+  - type: textarea
+    id: rollout
+    attributes:
+      label: Rollout Risks
+    validations:
+      required: true

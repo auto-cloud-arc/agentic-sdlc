@@ -1,0 +1,40 @@
+name: ADR Request
+about: Propose an architectural decision record update/new ADR
+labels: [adr]
+body:
+  - type: textarea
+    id: decision
+    attributes:
+      label: Decision Needed
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context and Constraints
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+    validations:
+      required: true
+  - type: textarea
+    id: test-plan
+    attributes:
+      label: Test/Validation Plan
+    validations:
+      required: true
+  - type: textarea
+    id: telemetry
+    attributes:
+      label: Logging/Telemetry Impact
+    validations:
+      required: true
+  - type: textarea
+    id: rollout
+    attributes:
+      label: Rollout Risks
+    validations:
+      required: true
