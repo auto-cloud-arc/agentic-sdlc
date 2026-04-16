@@ -38,6 +38,12 @@ The workshop flow uses one realistic feature slice:
                               +------------------+
 ```
 
+## Workflow Visual
+
+The following infographic is a supplemental reference for the broader Agentic SDLC story used in the workshop. It complements the ForgeOps feature slice by showing the end-to-end flow from request intake through implementation, validation, deployment, and iteration.
+
+![Agentic SDLC automation overview](images/agentic-sdlc-infographic.png)
+
 ## Quickstart
 
 1. Create and activate a virtual environment.
@@ -142,6 +148,7 @@ pytest
 - `docs/standards/` contains `coding-standards.md`, `testing-standards.md`, `observability-standards.md`, and `prompting-playbook.md`.
 - `docs/demos/` contains four facilitator scripts with exact Copilot prompts.
 - `docs/issues/sample-issues.md` contains the sample 8-issue breakdown.
+- `images/agentic-sdlc-infographic.png` contains a supplemental workflow visual for the workshop README.
 - `src/forgeops_orchestrator/` contains `main.py`, `models.py`, and `services.py` for the runnable app.
 - `tests/` contains `conftest.py` and `test_events.py` for local test execution.
 - `.github/ISSUE_TEMPLATE/` contains `feature.yml`, `bug.yml`, `tech-debt.yml`, and `adr-request.yml`.
@@ -156,5 +163,5 @@ pytest
 
 ## Notes
 
-- The repository folder is currently named `agnetic-sdlc`, while the workshop scenario and package describe ForgeOps Maintenance Orchestrator.
+- The repository folder is currently named `agentic-sdlc`, while the workshop scenario and package describe ForgeOps Maintenance Orchestrator.
 - The CI workflow runs `ruff format --check .`, `ruff check .`, and `pytest`.
