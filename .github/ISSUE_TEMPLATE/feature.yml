@@ -1,0 +1,44 @@
+name: Feature
+description: Request a new user-facing or workflow-facing capability.
+title: "[Feature] "
+labels:
+  - feature
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Describe the capability and why it matters.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: List testable outcomes.
+      placeholder: |
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+  - type: textarea
+    id: test-plan
+    attributes:
+      label: Test Plan
+      description: Explain how this change will be validated.
+    validations:
+      required: true
+  - type: textarea
+    id: telemetry
+    attributes:
+      label: Logging And Telemetry
+      description: Note audit, logging, or correlation requirements.
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Rollout Risks
+      description: Call out risk level and reviewer concerns.
+    validations:
+      required: true

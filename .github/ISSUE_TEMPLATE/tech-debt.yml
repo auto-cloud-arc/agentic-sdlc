@@ -1,0 +1,48 @@
+name: Tech Debt
+description: Track maintainability, observability, or workflow improvements.
+title: "[Tech Debt] "
+labels:
+  - tech-debt
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What friction or risk exists today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed Improvement
+      description: What should change?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: What concrete outcome closes this item?
+    validations:
+      required: true
+  - type: textarea
+    id: test-plan
+    attributes:
+      label: Validation Plan
+      description: How will we prove the improvement worked?
+    validations:
+      required: true
+  - type: textarea
+    id: telemetry
+    attributes:
+      label: Logging And Telemetry
+      description: What observability impact should reviewers expect?
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Rollout Risks
+      description: What review or adoption risks remain?
+    validations:
+      required: true

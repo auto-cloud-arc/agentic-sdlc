@@ -1,0 +1,48 @@
+name: ADR Request
+description: Propose or revisit an architectural decision.
+title: "[ADR] "
+labels:
+  - adr
+body:
+  - type: textarea
+    id: decision-area
+    attributes:
+      label: Decision Area
+      description: What architecture topic needs a decision?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What problem, constraint, or drift prompted this request?
+    validations:
+      required: true
+  - type: textarea
+    id: decision-criteria
+    attributes:
+      label: Decision Criteria
+      description: What conditions or acceptance criteria should shape the decision?
+    validations:
+      required: true
+  - type: textarea
+    id: test-plan
+    attributes:
+      label: Validation Or Follow-Up Plan
+      description: How will the team validate the decision or its impact?
+    validations:
+      required: true
+  - type: textarea
+    id: telemetry
+    attributes:
+      label: Logging And Telemetry Considerations
+      description: Note any audit or observability implications.
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Rollout Risks
+      description: What risks or downstream effects need review?
+    validations:
+      required: true

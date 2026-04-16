@@ -1,0 +1,6 @@
+# CODEOWNERS
+* @auto-cloud-arc/platform-engineering
+/docs/ @auto-cloud-arc/workshop-facilitators
+/src/ @auto-cloud-arc/backend-maintainers
+/tests/ @auto-cloud-arc/backend-maintainers
+/.github/ @auto-cloud-arc/platform-engineering

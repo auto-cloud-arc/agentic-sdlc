@@ -1,484 +1,114 @@
-# Agentic Devops
+# ForgeOps Maintenance Orchestrator
 
-> **Goal:** Turn "design intent -> engineering requirements -> actionable GitHub Issues -> code + PRs (with humans in control)" into a smooth, realistic storyline you can demo end-to-end.
->
-> **Note:** The scenario below is fictional and sanitized. It is designed to feel like a Contoso industrial software workflow without using confidential content.
+ForgeOps Maintenance Orchestrator is a small, workshop-friendly demo repository for a 90-minute session on Agentic SDLC with GitHub Copilot. The scenario is fictional but grounded in an industrial operations story: facility telemetry arrives, rules evaluate equipment health, maintenance work orders are created, audit logs are written, and a notification stub records what would be dispatched next.
 
----
+The repository is intentionally shaped to demonstrate the whole path from messy meeting notes to requirements, issue breakdown, working code, tests, pull request guardrails, and reusable engineering standards.
 
-## 1. Cohesive Story-Quality Scenario
+## Story Overview
 
-### The product: **ForgeOps Maintenance Orchestrator**
+The ForgeOps platform team supports several manufacturing sites. Operators want a lightweight service that turns telemetry anomalies into maintenance work orders fast enough to reduce downtime, but the engineering team also needs traceability, repeatable standards, and human review controls around AI-assisted development.
 
-A small internal platform team builds a service that converts facility telemetry into **actionable maintenance work orders** and **notifications**, while enforcing shared engineering standards across multiple teams.
+The workshop flow uses one realistic feature slice:
 
-#### Why this story works for the topics
+- A telemetry event is submitted to `POST /events`.
+- A simple rule checks whether temperature crosses a threshold.
+- A work order is created in memory for triggered events.
+- Audit entries are appended for ingestion and decisions.
+- A notification stub records what would have been dispatched.
 
-- It naturally starts with **meetings and design notes** as ambiguous inputs.
-- It forces **requirements and acceptance criteria** to get crisp.
-- It yields multiple **small issues** that are well suited to Copilot-assisted coding and PR workflows.
-- It benefits from **org-wide standards** and reusable guardrails such as linters, tests, workflows, and templates.
-
-### The cast
-
-- **Product Owner (PO):** cares about uptime, auditability, and fast triage.
-- **Site Reliability Engineer (SRE):** cares about alerts, reliability, and runbooks.
-- **Backend Developer:** builds ingestion and the rules engine.
-- **Platform Engineer:** enforces standards, workflows, and reusable templates.
-- **Reviewer or Lead:** provides human-in-the-loop decisions and approvals.
-
-### The problem statement
-
-> "We are missing critical maintenance events because design intent gets lost between meetings and tickets. We need a repeatable way to convert discussions into requirements, issues, code, and guarded PRs without slowing down developers."
-
----
-
-## 2. Enriched Topic Outline and Subtopics
-
-Each section below preserves your original intent while adding practical subtopics and demo hooks.
-
-### A. Design / Meeting -> Clear Engineering Requirements
-
-#### Subtopics to include
-
-- Turning meeting notes into:
-  - **Problem statement**
-  - **Non-functional requirements** such as latency, reliability, and audit logging
-  - **Constraints** such as no PII, retention, and dependency boundaries
-  - **Assumptions and open questions**
-- Converting ambiguous statements into **testable acceptance criteria**
-- Capturing architecture decisions as lightweight **ADRs**
-- Aligning on a **definition of done** that covers tests, docs, and observability
-
-#### Demo hook
-
-- Start from `/docs/meeting-notes/2026-04-xx-kickoff.md` with messy notes.
-- Use Copilot to produce `/docs/requirements/req-001-maintenance-orchestrator.md`.
-
----
-
-### B. Requirements -> Actionable GitHub Issues
-
-#### Subtopics to include
-
-- Issue decomposition: **Epic -> Features -> Tasks**
-- Issue templates for:
-  - Feature
-  - Bug
-  - Tech debt
-  - ADR request
-- Writing issues with:
-  - **Scope**
-  - **Acceptance Criteria**
-  - **Telemetry and logging expectations**
-  - **Test plan**
-  - **Risk and rollout notes**
-- Labels, milestones, and lightweight project board automation
-
-#### Demo hook
-
-- Copilot transforms requirements into 6 to 8 issues using templates under:
-  - `.github/ISSUE_TEMPLATE/feature.yml`
-  - `.github/ISSUE_TEMPLATE/bug.yml`
-
----
-
-### C. Issues -> Code with Human Control
-
-#### Subtopics to include
-
-- Copilot-assisted implementation patterns:
-  - Scaffolding endpoints and handlers
-  - Generating unit and integration tests
-  - Refactoring and explaining code
-- Human-control practices:
-  - Explicit prompt boundaries
-  - Review checklists
-  - PR descriptions that cite acceptance criteria
-  - "Trust but verify" through tests, linting, and static checks
-
-#### Demo hook
-
-- Implement one issue end to end:
-  - Telemetry ingestion endpoint
-  - Rules evaluation
-  - Work order creation
-  - Tests
-  - Open PR and review
-
----
-
-### D. Making Team Standards Explicit
-
-#### Subtopics to include
-
-- Standards as code:
-  - `CONTRIBUTING.md`
-  - `docs/standards/coding-standards.md`
-  - `docs/standards/testing-standards.md`
-  - `docs/standards/observability.md`
-- PR templates and review checklists
-- Definition of done enforced by CI:
-  - Formatting
-  - Linting
-  - Tests
-  - Optional coverage thresholds
-- Prompting standards:
-  - House-style prompts for Copilot Chat
-  - Examples of good and bad prompts
-
-#### Demo hook
-
-- Show "Before: tribal knowledge" and "After: visible, repeatable rules."
-
----
-
-### E. Reusing Standards Across Teams
-
-#### Subtopics to include
-
-- Reusable GitHub Actions workflows with `workflow_call`
-- Repo templates with a cookiecutter-style structure
-- Shared issue templates and PR templates
-- `CODEOWNERS` for consistent review routing
-
-#### Demo hook
-
-- A second downstream service folder or sample repo branch uses the same workflow and standards with minimal work.
-
----
-
-### F. Guardrails and Review, Not Blind Automation
-
-#### Subtopics to include
-
-- Protected branches and required checks
-- Required reviewers through `CODEOWNERS`
-- CI gates and manual approvals where they matter
-- Minimal-risk rollout:
-  - Feature flags through simple configuration
-  - Simulated staged environments
-- AI-safety guardrails:
-  - Never auto-merge
-  - Always run tests
-  - Require PR descriptions to map back to acceptance criteria
-
-#### Demo hook
-
-- Copilot proposes changes, and you show how checks and review prevent risky merges.
-
----
-
-### G. From Inconsistent Practices to Shared Ways of Working
-
-#### Subtopics to include
-
-- Team agreements encoded as templates and automation
-- Onboarding path:
-  - Quickstart
-  - First PR in 15 minutes
-- Repeatable cadence:
-  - Meeting -> requirements -> issues -> PRs
-
-#### Demo hook
-
-- A new developer follows the README and templates to deliver a feature consistently.
-
----
-
-### H. What Success Looks Like for Developers
-
-#### Subtopics to include
-
-- Leading indicators:
-  - Fewer clarification loops
-  - PR turnaround time
-  - Fewer reopened issues
-  - Increased test coverage on new code
-- Qualitative outcomes:
-  - Consistent code style
-  - Predictable reviews
-  - Faster onboarding
-
-#### Demo hook
-
-- Close the session with a before-and-after storyboard and a short checklist teams can adopt next week.
-
----
-
-## 3. 90-Minute Session Run of Show
-
-### 0-10 min: Setup and the Agentic SDLC why
-
-- The pain: intent gets lost from meeting -> tickets -> code.
-- The promise: convert artifacts efficiently while keeping humans in control.
-- Introduce the repo and storyline.
-
-### 10-25 min: Meeting notes -> Requirements
-
-#### Live demo
-
-- Open `/docs/meeting-notes/kickoff.md`.
-- Use Copilot Chat to produce:
-  - Requirements doc
-  - Acceptance criteria
-  - Open questions
-  - ADR stub
-
-### 25-40 min: Requirements -> GitHub Issues
-
-#### Live demo
-
-- Use Copilot to generate 6 to 8 issues aligned to templates:
-  - Ingestion endpoint
-  - Rules engine
-  - Persistence layer
-  - Audit log
-  - Notification stub
-  - Tests and CI
-- Show crisp scope and acceptance criteria in each issue.
-
-### 40-70 min: Issue -> Code + Tests + PR
-
-#### Live demo
-
-- Implement 1 to 2 issues with Copilot assistance.
-- Generate tests.
-- Open a PR using a template that maps changes back to acceptance criteria.
-- Walk through reviewer flow and show why guardrails matter.
-
-### 70-85 min: Standards, reuse, and guardrails
-
-- Show `.github/workflows/ci.yml` gates.
-- Show the reusable workflow structure.
-- Show standards docs and `CODEOWNERS`.
-
-### 85-90 min: Wrap up
-
-- Reiterate outcomes: fewer surprises, faster onboarding, and more predictable quality.
-- Leave a short next-steps checklist.
-
----
-
-## 4. The Demo Repo You Will Build
-
-Use this as the **repository blueprint** for your workshop.
+## Architecture
 
 ```text
-forgeops-maintenance-orchestrator/
-├─ README.md
-├─ docs/
-│  ├─ meeting-notes/
-│  │  └─ 2026-04-kickoff.md
-│  ├─ requirements/
-│  │  ├─ req-001-orchestrator.md
-│  │  └─ adr-001-event-model.md
-│  ├─ standards/
-│  │  ├─ coding-standards.md
-│  │  ├─ testing-standards.md
-│  │  ├─ observability-standards.md
-│  │  └─ prompting-playbook.md
-│  └─ demos/
-│     ├─ demo-01-meeting-to-requirements.md
-│     ├─ demo-02-requirements-to-issues.md
-│     ├─ demo-03-issue-to-pr.md
-│     └─ demo-04-standards-guardrails.md
-├─ src/
-│  ├─ api/
-│  ├─ domain/
-│  ├─ rules/
-│  ├─ storage/
-│  └─ notifications/
-├─ tests/
-├─ .github/
-│  ├─ ISSUE_TEMPLATE/
-│  │  ├─ feature.yml
-│  │  ├─ bug.yml
-│  │  ├─ tech-debt.yml
-│  │  └─ adr-request.yml
-│  ├─ PULL_REQUEST_TEMPLATE.md
-│  ├─ CODEOWNERS
-│  └─ workflows/
-│     ├─ ci.yml
-│     └─ reusable-quality-gates.yml
-├─ CONTRIBUTING.md
-└─ LICENSE
++---------------------+       +------------------+       +-------------------+
+| Telemetry Producer  | ----> | FastAPI /events  | ----> | Rule Evaluation   |
+| plant gateway / PLC |       | request handling |       | temperature check |
++---------------------+       +------------------+       +-------------------+
+                                        |                              |
+                                        v                              v
+                              +------------------+           +------------------+
+                              | In-memory store  |           | Audit log append |
+                              | events/workorders|           | decision trail   |
+                              +------------------+           +------------------+
+                                        |
+                                        v
+                              +------------------+
+                              | Notification stub|
+                              | dispatch record  |
+                              +------------------+
 ```
 
-### Recommended tech stack
+## Quickstart
 
-Pick one stack to keep the flow smooth.
+1. Create and activate a virtual environment.
+2. Install dependencies.
+3. Run the API.
+4. Run the quality checks.
 
-#### Option A: Python + FastAPI
-
-- Simple endpoints, fast tests, and easy explanations
-- Good for showing Copilot generating tests and refactors quickly
-
-#### Option B: TypeScript + Express
-
-- Similar benefits
-- Strong typing helps demonstrate Copilot patterns
-
-> If Contoso developers skew heavily toward .NET or Java, you can still keep the repo small and concept-driven. The SDLC storyline is the point.
-
----
-
-## 5. Cohesive Demo Scenarios
-
-### Scenario 1: Kickoff meeting chaos -> crisp requirements
-
-**Artifact:** `/docs/meeting-notes/2026-04-kickoff.md`
-
-Include realistic messy notes such as:
-
-- Need alerts for critical events
-- Audit log required
-- No PII
-- Latency under 2 seconds for event-to-ticket
-- Must support multiple sites
-- Need to standardize across teams
-
-#### Copilot outputs
-
-- Requirements doc with:
-  - Goals and non-goals
-  - User stories
-  - Acceptance criteria
-  - NFRs
-  - Open questions
-- ADR stub defining the event schema
-
----
-
-### Scenario 2: Requirements -> GitHub Issues engineers can implement
-
-#### Artifacts
-
-- Issue templates in `.github/ISSUE_TEMPLATE/*`
-- 6 to 8 issues created from `req-001`
-
-#### Example issue set
-
-1. **Feature:** Telemetry ingestion endpoint with `POST /events`
-2. **Feature:** Rules engine using threshold-based evaluation
-3. **Feature:** Work order creation and persistence
-4. **Feature:** Audit log entries for each decision
-5. **Feature:** Notification stub with simulated email or webhook behavior
-6. **Quality:** CI pipeline and standards gates
-7. **Tech debt:** Structured logging and correlation IDs
-8. **ADR request:** Confirm event schema and versioning approach
-
-Each issue includes:
-
-- Scope
-- Acceptance criteria
-- Test plan
-- Logging expectations
-
----
-
-### Scenario 3: Issue -> Code + Tests + PR
-
-#### Flow
-
-- Copilot generates:
-  - API handler skeleton
-  - Domain model
-  - Tests for happy path and failure path
-- You manually validate:
-  - Edge cases
-  - Correctness
-  - Readability
-  - Alignment with standards
-- Open PR:
-  - PR template forces acceptance criteria mapping
-  - CI runs
-  - Reviewer sign-off is required
-
----
-
-### Scenario 4: Standards reused across teams and guardrails
-
-#### Artifacts
-
-- `docs/standards/*`
-- `.github/workflows/reusable-quality-gates.yml`
-- `CODEOWNERS`
-- Documented branch-protection recommendations
-
-#### Demo moment
-
-- Show how a second module or service can adopt the same templates and workflows with almost no extra effort.
-
----
-
-## 6. Demos as Markdown Scripts
-
-Create facilitator scripts so the session runs consistently.
-
-### `/docs/demos/demo-01-meeting-to-requirements.md`
-
-- Starting state: messy meeting notes
-- Live prompts to run in Copilot Chat
-- Expected output sections
-
-### `/docs/demos/demo-02-requirements-to-issues.md`
-
-- Prompt to create an epic and decomposed issues
-- How to apply labels and milestones
-
-### `/docs/demos/demo-03-issue-to-pr.md`
-
-- Implement Issue #X
-- Prompts for code and tests
-- PR template mapping to acceptance criteria
-- Review checklist
-
-### `/docs/demos/demo-04-standards-guardrails.md`
-
-- Show standards docs
-- Show reusable workflows
-- Show required checks and review gates
-
-## 8. Bonus: In-Workshop Prompts
-
-These are short, reliable prompts you can use live and also place in `prompting-playbook.md`.
-
-### Prompt: Meeting notes -> Requirements
-
-```text
-Convert these meeting notes into an engineering requirements doc.
-Include: goals, non-goals, user stories, acceptance criteria, NFRs, constraints, open questions, and a short definition of done.
-Keep it concise and testable.
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements-dev.txt
+uvicorn forgeops_orchestrator.main:app --app-dir src --reload
 ```
 
-### Prompt: Requirements -> Issue breakdown
+In a second shell:
 
-```text
-Decompose this requirements doc into an Epic and 6-8 GitHub issues.
-For each issue include: scope, acceptance criteria, test plan, logging/telemetry expectations, and risk/rollout notes.
+```powershell
+ruff format --check .
+ruff check .
+pytest
 ```
 
-### Prompt: Implement an issue with tests
+Sample request:
 
-```text
-Implement Issue #<n> following our coding and testing standards.
-Create small functions, include error handling, and add unit tests for happy path + one failure path.
-Explain any assumptions.
+```powershell
+Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8000/events -ContentType application/json -Body '{
+  "event_id": "evt-live-001",
+  "site_id": "plant-7",
+  "asset_id": "compressor-2",
+  "metric": "temperature",
+  "value": 104.5,
+  "severity": "critical",
+  "timestamp": "2026-04-15T10:30:00Z",
+  "correlation_id": "corr-live-001"
+}'
 ```
 
-### Prompt: PR description with human control
+## Demo Flow
 
-```text
-Draft a PR description that links to the issue, maps changes to each acceptance criterion, lists tests executed, calls out risks, and includes a reviewer checklist.
-```
+1. Start with messy notes in `docs/meeting-notes/2026-04-kickoff.md`.
+2. Show how requirements and an ADR are derived in `docs/requirements/`.
+3. Break the work into issues using `docs/issues/sample-issues.md` and the issue templates.
+4. Implement the endpoint and tests in `src/` and `tests/`.
+5. Use the PR template, CODEOWNERS, and CI workflow to show review guardrails.
+6. Close by showing how standards in `docs/standards/` can be reused in another repo.
 
----
+## Workshop Agenda
 
-## 9. Two Choices to Tailor This Further
+| Time | Segment | Outcome |
+| --- | --- | --- |
+| 0-10 min | Setup and story | Establish the industrial scenario and guardrail theme |
+| 10-25 min | Meeting notes to requirements | Convert ambiguity into user stories and acceptance criteria |
+| 25-40 min | Requirements to issues | Create implementation-ready work items |
+| 40-70 min | Issue to code and tests | Build the `POST /events` slice with Copilot assistance |
+| 70-85 min | PR and quality gates | Show templates, CODEOWNERS, CI, and human review points |
+| 85-90 min | Wrap-up | Summarize repeatable practices and next steps |
 
-1. **Preferred language stack for Honeywell developers:** Python, TypeScript, Java, or .NET?
-2. **Preferred storyline:**
-   - Connected facilities or building controls
-   - Aerospace or avionics telemetry
-   - Manufacturing line monitoring
+## Repository Map
+
+- `docs/meeting-notes/` contains the kickoff notes used as the ambiguous starting point.
+- `docs/requirements/` contains the requirement spec and ADR.
+- `docs/standards/` captures coding, testing, observability, and prompting guidance.
+- `docs/demos/` contains facilitator scripts with exact prompts to paste into Copilot Chat.
+- `docs/issues/sample-issues.md` provides the 8 issue breakdown used in the workshop.
+- `src/forgeops_orchestrator/` contains the FastAPI service and in-memory orchestration logic.
+- `tests/` contains the core workshop validation scenarios.
+- `.github/` contains issue forms, pull request template, CODEOWNERS, and reusable CI.
+
+## Workshop-Friendly Design Choices
+
+- Python and FastAPI keep the code compact and readable for live explanation.
+- The persistence layer is in memory so the repo stays setup-light.
+- Audit records and notifications are explicit to support observability and compliance discussion.
+- The repository emphasizes review guardrails over automation theater: no auto-merge, no hidden steps, no black-box deployment story.

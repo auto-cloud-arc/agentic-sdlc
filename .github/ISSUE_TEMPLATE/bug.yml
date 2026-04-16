@@ -1,0 +1,48 @@
+name: Bug
+description: Report a defect in behavior, validation, or guardrails.
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed Behavior
+      description: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should have happened?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Fix Acceptance Criteria
+      description: Describe the conditions for considering the bug fixed.
+    validations:
+      required: true
+  - type: textarea
+    id: test-plan
+    attributes:
+      label: Test Plan
+      description: Describe reproduction and regression checks.
+    validations:
+      required: true
+  - type: textarea
+    id: telemetry
+    attributes:
+      label: Logging And Telemetry
+      description: Capture logs, audit fields, or missing observability.
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Rollout Risks
+      description: What should reviewers watch for?
+    validations:
+      required: true
