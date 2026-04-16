@@ -56,13 +56,15 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 python -m pip install -r requirements-dev.txt
-uvicorn forgeops_orchestrator.main:app --app-dir src --reload
+python run_server.py --reload
 ```
 
-If port `8000` is already reserved on Windows, start the API on `8001` instead:
+The launcher prefers `http://127.0.0.1:8000` and automatically falls back to `http://127.0.0.1:8001` when `8000` is already occupied. The selected URL is printed at startup.
+
+To force a specific port, pass `--port`:
 
 ```powershell
-uvicorn forgeops_orchestrator.main:app --app-dir src --host 127.0.0.1 --port 8001 --reload
+python run_server.py --reload --port 8010
 ```
 
 Health check:
@@ -71,7 +73,7 @@ Health check:
 Invoke-RestMethod -Method Get -Uri http://127.0.0.1:8000/health
 ```
 
-If you started the API on `8001`, use:
+If the launcher selected `8001`, use:
 
 ```powershell
 Invoke-RestMethod -Method Get -Uri http://127.0.0.1:8001/health
@@ -99,6 +101,8 @@ Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8000/events -ContentType ap
   "correlation_id": "corr-live-001"
 }'
 ```
+
+If the launcher selected `8001`, replace `8000` with `8001` in local request examples.
 
 ## Demo Flow
 
@@ -161,6 +165,7 @@ pytest
 - `docs/demos/` contains four facilitator scripts with exact Copilot prompts.
 - `docs/issues/sample-issues.md` contains the sample 8-issue breakdown.
 - `images/agentic-sdlc-infographic.png` contains a supplemental workflow visual for the workshop README.
+- `run_server.py` starts the local development API and automatically falls back from port `8000` to `8001` when needed.
 - `src/forgeops_orchestrator/` contains `main.py`, `models.py`, and `services.py` for the runnable app.
 - `tests/` contains `conftest.py` and `test_events.py` for local test execution.
 - `.github/ISSUE_TEMPLATE/` contains `feature.yml`, `bug.yml`, `tech-debt.yml`, and `adr-request.yml`.
@@ -177,4 +182,4 @@ pytest
 
 - The repository folder is currently named `agentic-sdlc`, while the workshop scenario and package describe ForgeOps Maintenance Orchestrator.
 - The CI workflow runs `ruff format --check .`, `ruff check .`, and `pytest`.
-- On some Windows environments, port `8000` may already be occupied by another local process. This repo was verified to run correctly on port `8001` when that happens.
+- On some Windows environments, port `8000` may already be occupied by another local process. `python run_server.py --reload` detects that case and falls back to `8001` automatically.
