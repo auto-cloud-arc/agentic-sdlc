@@ -59,10 +59,22 @@ python -m pip install -r requirements-dev.txt
 uvicorn forgeops_orchestrator.main:app --app-dir src --reload
 ```
 
+If port `8000` is already reserved on Windows, start the API on `8001` instead:
+
+```powershell
+uvicorn forgeops_orchestrator.main:app --app-dir src --host 127.0.0.1 --port 8001 --reload
+```
+
 Health check:
 
 ```powershell
 Invoke-RestMethod -Method Get -Uri http://127.0.0.1:8000/health
+```
+
+If you started the API on `8001`, use:
+
+```powershell
+Invoke-RestMethod -Method Get -Uri http://127.0.0.1:8001/health
 ```
 
 In a second shell:
@@ -165,3 +177,4 @@ pytest
 
 - The repository folder is currently named `agentic-sdlc`, while the workshop scenario and package describe ForgeOps Maintenance Orchestrator.
 - The CI workflow runs `ruff format --check .`, `ruff check .`, and `pytest`.
+- On some Windows environments, port `8000` may already be occupied by another local process. This repo was verified to run correctly on port `8001` when that happens.
