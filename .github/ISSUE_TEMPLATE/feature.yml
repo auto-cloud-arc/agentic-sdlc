@@ -1,0 +1,50 @@
+name: Feature
+description: Request a scoped feature aligned to a requirement.
+title: "[Feature]: "
+labels:
+  - feature
+body:
+  - type: input
+    id: requirement
+    attributes:
+      label: Requirement reference
+      description: Link the requirement, ADR, or epic that motivates the work.
+      placeholder: REQ-001
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Describe the behavior that is in scope for this issue.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Write testable acceptance criteria.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: telemetry
+    attributes:
+      label: Telemetry and logging expectations
+      description: Note audit, observability, and correlation expectations.
+    validations:
+      required: true
+  - type: textarea
+    id: test-plan
+    attributes:
+      label: Test plan
+      description: Describe the automated and manual validation expected for this change.
+    validations:
+      required: true
+  - type: textarea
+    id: risk
+    attributes:
+      label: Risk and rollout notes
+      description: Capture rollout controls, dependencies, and follow-up work.

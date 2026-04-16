@@ -1,0 +1,15 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+      - 'copilot/**'
+
+jobs:
+  quality-gates:
+    uses: ./.github/workflows/reusable-quality-gates.yml
+    with:
+      python-version: '3.11'

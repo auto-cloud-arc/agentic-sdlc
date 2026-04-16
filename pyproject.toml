@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=80"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "forgeops-maintenance-orchestrator"
+version = "0.1.0"
+description = "Demo repository for an end-to-end agentic SDLC workshop."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi==0.115.12",
+  "uvicorn==0.34.2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "httpx==0.28.1",
+  "ruff==0.11.6",
+]
+
+[tool.setuptools.packages.find]
+include = ["src*"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]

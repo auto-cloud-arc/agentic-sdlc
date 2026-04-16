@@ -1,0 +1,26 @@
+name: Tech debt
+description: Track structural follow-up work that improves maintainability or guardrails.
+title: "[Tech Debt]: "
+labels:
+  - tech-debt
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Current pain
+      description: What friction, risk, or inconsistency exists today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed improvement
+    validations:
+      required: true
+  - type: textarea
+    id: success
+    attributes:
+      label: Success signal
+      description: How will the team know this work paid off?
+    validations:
+      required: true

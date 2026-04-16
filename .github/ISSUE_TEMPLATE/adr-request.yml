@@ -1,0 +1,31 @@
+name: ADR request
+description: Capture an architectural decision that needs explicit review.
+title: "[ADR]: "
+labels:
+  - adr
+body:
+  - type: input
+    id: decision-area
+    attributes:
+      label: Decision area
+      placeholder: Event schema versioning
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context and trade-offs
+    validations:
+      required: true
+  - type: textarea
+    id: options
+    attributes:
+      label: Options considered
+    validations:
+      required: true
+  - type: textarea
+    id: recommendation
+    attributes:
+      label: Recommendation
+    validations:
+      required: true

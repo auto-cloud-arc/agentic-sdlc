@@ -1,0 +1,5 @@
+# Replace the sample owners below with real users or teams before enforcing required reviews.
+* @auto-cloud-arc/platform-engineering
+/docs/ @auto-cloud-arc/platform-engineering
+/src/ @auto-cloud-arc/backend-maintainers
+/.github/ @auto-cloud-arc/platform-engineering
